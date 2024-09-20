@@ -47,7 +47,8 @@
 
 // console.log("A guy named " + person.name + " with age " +  person.age  + " is coming from " + person.place +" at 4 pm ");
 
-let Price = Number(prompt("Actual Price"));
-let Discount = Number(prompt("Percentage Discount"));
+// let Price = Number(prompt("Actual Price"));
+// let Discount = Number(prompt("Percentage Discount"));
 
-console.log("Final Pice is Rs:" + (Price-((Discount / 100)*Price)));
+// console.log("Final Pice is Rs:" + (Price-((Discount / 100)*Price)));
+
