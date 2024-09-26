@@ -40,12 +40,12 @@ let y = {
 //     console.log(i);
 // }
 
-// let i= 0 
+let i= 0 
 
-// do {
-//     console.log(i);
-//     i++;
+do {
+   setTimeout(console.log(i),1000) 
+    i++;
 
-// } while(i<10);
+} while(i<10);
 
 
