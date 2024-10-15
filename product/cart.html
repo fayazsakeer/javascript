@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="products">
+
+
+    </div>
+    <div id="checkout">
+        <br>
+        <br>
+        <br>
+        <button id="clearall" onclick="alert('Cart is empty')">Clear All</button>
+        <button id="odr" onclick="alert('order placed')">Order Now</button>
+
+    </div>
+    <script>
+
+        function store() {
+            let products = JSON.parse(localStorage.getItem("cart") ?? "[]")
+            let productsDiv = document.getElementById("products")
+            let total = 0
+            productsDiv.innerHTML = "";
+            products.forEach(data => {
+                total += data.price;
+                productsDiv.innerHTML += `
+             <h2>${data.title}</h2>
+            <img src="${data.thumbnail}">
+            <h3><i>${data.price}</i></h3>
+            <button id="btn-${data.id}" onclick="clearItem(${data.id})">Remove from cart</button>`
+
+                // document.querySelectorAll(`button`)
+                //     .addEventListener("click", () => {
+                //         console.log(data.id);
+                //         clearItem(data.id)
+                //     })
+
+
+            })
+            document.getElementById("checkout")
+            .innerHTML += total
+        }
+
+        function clearItem(id) {
+            let products = JSON.parse(localStorage.getItem("cart") ?? "[]")
+            products = products.filter(e => e.id != id);
+            localStorage.setItem("cart", JSON.stringify(products))
+            alert("Item removed")
+            store()
+        }
+
+      
+        store()
+
+    </script>
+</body>
+
+</html>

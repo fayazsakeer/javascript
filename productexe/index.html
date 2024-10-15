@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    <style>
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Products</h1>
+    <div class="product-list" id="productList"></div>
+
+    <script>
+        fetch('https://dummyjson.com/products')
+            .then(response => response.json())
+            .then(data => {
+                const products = data.products;
+                let productList = document.getElementById('productList');
+                products.forEach(product => {
+                    let productCard = `
+                        <div class="product">
+                            <img src="${product.thumbnail}" alt="${product.title}">
+                            <h3>${product.title}</h3>
+                            <p>Price: ₹${product.price}</p>
+                            <p>Rating: ${product.rating}</p>
+                            <button onclick="viewProduct(${product.id})">View Details</button>
+                        </div>
+                    `;
+                    productList.innerHTML += productCard;
+                });
+            });
+
+        function viewProduct(id) {
+            window.location.href = `product.html?id=${id}`;
+        }
+    </script>
+
+</body>
+</html>

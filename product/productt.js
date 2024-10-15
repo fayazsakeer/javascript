@@ -16,5 +16,5 @@ fetch('https://dummyjson.com/products')
     productsDiv.innerHTML = product
 });
 function nav(id){
-    location.href = `/javascript/phome.html?id=${id}`
+    location.href = `./phome.html?id=${id}`
 }

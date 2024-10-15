@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="item">
+
+    </div>
+    <script>
+        let id = location.href.split("?")[1].split("=")[1]
+        let itemDiv = document.getElementById("item")
+
+        fetch(`https://dummyjson.com/products/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            itemDiv.innerHTML = `
+            <h2>${data.title}</h2>
+            <img src="${data.thumbnail}">
+            <h3><i>${data.price}</i></h3>
+            <button>Add to Cart</button>`
+
+            document.querySelector("button")
+            .addEventListener("click", () => {
+                addtoCart(data)
+            })
+            
+        })
+
+        function addtoCart(item) {
+            let products = JSON.parse(localStorage.getItem("cart") ?? "[]")
+            products.push(item)
+            localStorage.setItem("cart",JSON.stringify(products))
+            alert("Item added")
+        }
+    </script>
+</body>
+</html>

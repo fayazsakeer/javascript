@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        .product-details {
+            text-align: center;
+            padding: 20px;
+        }
+        .product-details img {
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-details" id="productDetails"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        fetch(`https://dummyjson.com/products/${productId}`)
+            .then(response => response.json())
+            .then(product => {
+                let productDetails = document.getElementById('productDetails');
+                productDetails.innerHTML = `
+                    <h1>${product.title}</h1>
+                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <p><strong>Price:</strong> ₹${product.price}</p>
+                    <p><strong>Rating:</strong> ${product.rating}</p>
+                    <p><strong>Description:</strong> ${product.description}</p>
+                `;
+            });
+    </script>
+
+</body>
+</html>
