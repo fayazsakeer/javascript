@@ -6,8 +6,23 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="profile">
+
+    </div>
     <script>
-       
+    //   let url = console.log(window.location.search); 
+    //     const place = new URLSearchParams(url)
+    //     console.log(place);
+    //     const id = place.get("id")
+    //     console.log(id);
+        let id = location.href.split("?")[1].split("=")[1];
+        let profileDiv = document.getElementById("profile")
+
+        fetch(`https://dummyjson.com/users/${id}`)
+             .then(res => res.json())
+             .then(data => {
+                
+             })
     </script>
 </body>
 </html>
