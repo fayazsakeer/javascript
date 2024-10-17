@@ -6,12 +6,41 @@
     <title>profile</title>
 </head>
 <body>
+    <div id="pic">
+
+    </div>
+    <div id="details">
+
     <script>
+        let detailsDiv = document.getElementById("details")
+        let picDiv = document.getElementById("pic")
         function logout(){
             localStorage.removeItem("token")
             location.href = "login.html"
         }
-        if(!localStorage.getItem("token"))
+        if(!localStorage.getItem("token")){
+            location.href = "login.html"
+        }
+        fetch('https://dummyjson.com/user/me',{
+            method: 'GET',
+            headers:{
+                "Authorization":`Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            picDiv.innerHTML=`
+            <img src="${data.image}">`
+            detailsDiv.innerHTML = `
+            
+            <h2>${`${data.firstName} ${data.maidenName} ${data.lastName}`}</h2>
+            <h5>${data.age}</h5>
+            <p>${data.gender}</p><br><br>
+            <p>${data.email}</p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet natus impedit sint quam animi illo ea repudiandae totam necessitatibus maxime, incidunt porro, pariatur quas eligendi obcaecati distinctio cum consectetur vero!
+            
+            `
+        })
     </script>
 </body>
 </html>
