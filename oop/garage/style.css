@@ -1,7 +1,28 @@
-#garage{
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    border: 1px,black,solid;
-    align-items: center;
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label, input {
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.bill {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.bill h3 {
+  margin-top: 0;
 }
