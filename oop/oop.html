@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Vehcle {
+            brand;
+            model;
+            colour;
+            #price;
+            constructor(brand,model,colour,price){
+                this.brand = brand;
+                this.model = model;
+                this.colour = colour;
+                this.#price = price;
+
+            }
+
+            get price(){
+                if(this.brand == "Nissan"){
+                    return this.#price
+                }
+
+            }
+
+            set price (price){
+                this.#price=price
+            }
+
+            makesound(){
+                console.log("vroom..");
+             } 
+            
+    }  
+    let v1 = new Vehcle("Pegani ","GTR","GRAY","1.8Cr")
+
+    console.log(v1);
+    
+            
+        
+
+    </script>
+</body>
+</html>

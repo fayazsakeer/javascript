@@ -12,7 +12,7 @@
 
 function abcd(name) {
     let promise = new Promise((res,rej) => {
-        setTimeout(() => res(`Hello ${name}`),2000)
+        setTimeout(() => res(`Hello ${name}`),4000)
     })
     return promise
 }

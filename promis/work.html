@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fetchWithretry(url,retry) {
+            return new Promise((res,rej) =>{
+                const getData = (a) => {
+                    fetch(url)
+                    .then(res => res.json())
+                    .then(data => res(data))
+                    .catch(e =>{
+                        if(a<retry){
+                            console.log("Retrying...");
+                            getData(a+1)
+                        }else{
+                            rej(e)
+                        }
+
+                    })
+                }
+                getData(0)
+            })
+        }
+
+        fetchWithretry("https://dummyjson.com./products",4)
+        .then(data => console.log(data) )
+        .catch(e=> console.log(e)
+        )
+        
+       
+    </script>
+</body>
+</html>
