@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Vehicle{
+            brand;
+            model;
+            year;
+            color;
+            constructor(brand,model,year,color){
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+                this.color = color
+            }
+            makeSound (){
+                console.log("vroom");
+            }
+        }
+
+        class Truck extends Vehicle {
+            load 
+            constructor(brand,model,year,color,load){
+                super(brand,model,year,color)
+                this.load = load;
+            }
+        }
+        let t1 = new Truck ("Volvo","S770","2018","black","40ton")
+        t1.makeSound()
+        console.log(t1);
+        
+    </script>
+</body>
+</html>
